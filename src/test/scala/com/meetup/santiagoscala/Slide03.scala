@@ -101,7 +101,7 @@ object Slide03 extends LazyLogging {
     val source = Source.fromPublisher(publisher)
 
     val flow = Flow[Int]
-      .throttle(4, 1.second, 4, ThrottleMode.shaping)
+      //.throttle(4, 1.second, 4, ThrottleMode.shaping)
       .zipWithIndex.map(log)
 
     val done = source
@@ -115,3 +115,9 @@ object Slide03 extends LazyLogging {
     system.terminate()
   }
 }
+
+
+
+
+// compartir para los spring-web
+// https://developer.lightbend.com/docs/alpakka/current/spring-web.html

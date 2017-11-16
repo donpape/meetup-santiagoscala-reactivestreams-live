@@ -11,7 +11,6 @@ import com.meetup.santiagoscala.Slide04.JDBCStream.JDBCQueryPublisher
 import com.typesafe.scalalogging.LazyLogging
 import org.reactivestreams.{Publisher, Subscriber, Subscription}
 
-import scala.collection.immutable.NumericRange
 import scala.concurrent.Await
 import scala.concurrent.duration._
 import scala.util.{Failure, Success, Try}
@@ -143,8 +142,8 @@ object Slide04 extends LazyLogging {
     val sql = "select * from INFORMATION_SCHEMA.TABLES"
 
     val publisher = new JDBCQueryPublisher(ds.getConnection, sql, (rs: ResultSet) => {
-      //      if (rs.getString(3) == "VIEWS")
-      //        throw new Exception("algo se fue a la B")
+//      if (rs.getString(3) == "VIEWS")
+//        throw new Exception("algo se fue a la B")
       Table(rs.getString(2), rs.getString(3))
     })
 
@@ -169,7 +168,6 @@ object Slide04 extends LazyLogging {
     val ter = Await.result(out, 10.minutes)
     logger.info("   closing output", ter)
     System.exit(0)
-
 
   }
 }
